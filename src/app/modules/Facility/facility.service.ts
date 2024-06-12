@@ -9,6 +9,12 @@ const createFacilityIntoDB = async (payload: TFacility) => {
   return result;
 };
 
+// get all facilities
+const getAllFacilitiesFromDB = async () => {
+  const result = await Facility.find();
+  return result;
+};
+
 // update facility
 const updateFacilityIntoDB = async (id: string, payload: TFacility) => {
   const result = await Facility.findOneAndUpdate({ _id: id }, payload, {
@@ -18,8 +24,17 @@ const updateFacilityIntoDB = async (id: string, payload: TFacility) => {
   return result;
 };
 
+// delete facility
+const deleteFacilityFromDB = async (id: string) => {
+  const result = await Facility.deleteOne({ _id: id });
+  return result;
+};
+
+
 // expost controllers
 export const FacilityServices = {
   createFacilityIntoDB,
   updateFacilityIntoDB,
+  getAllFacilitiesFromDB,
+  deleteFacilityFromDB,
 };
