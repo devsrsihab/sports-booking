@@ -14,8 +14,9 @@ app.use(cors());
 
 // application routes
 app.use('/api/v1', router);
+// global Error handler
 app.use(globalErrorHandler);
-//Not Found
+//Not Found route
 app.use(notFound);
 
 export default app;
