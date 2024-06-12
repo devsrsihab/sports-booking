@@ -1,11 +1,15 @@
-/* eslint-disable @typescript-eslint/no-this-alias */
-import bcrypt from 'bcrypt';
 import { Schema, model } from 'mongoose';
-import config from '../../config';
 import { TUser, UserModel } from './user.interface';
-const userSchema = new Schema<TUser, UserModel>(
+import bcrypt from 'bcrypt';
+import config from '../../config';
+
+const userSchema = new Schema<TUser>(
   {
-    id: {
+    name: {
+      type: String,
+      required: true,
+    },
+    email: {
       type: String,
       required: true,
       unique: true,
@@ -13,71 +17,70 @@ const userSchema = new Schema<TUser, UserModel>(
     password: {
       type: String,
       required: true,
-      select: 0,
+      select: false,
     },
-    needsPasswordChange: {
-      type: Boolean,
-      default: true,
+    phone: {
+      type: String,
+      required: true,
     },
-    passwordChangedAt: {
-      type: Date,
+    address: {
+      type: String,
+      required: true,
     },
     role: {
       type: String,
-      enum: ['student', 'faculty', 'admin'],
+      required: true,
+      enum: {
+        values: ['admin', 'user'],
+        message:
+          "{VALUE} is not valid. Allowed values are 'admin', 'student', or 'teacher'",
+      },
     },
-    status: {
-      type: String,
-      enum: ['in-progress', 'blocked'],
-      default: 'in-progress',
-    },
-    isDeleted: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  {
-    timestamps: true,
   },
 );
 
+// pre middleware / hook: we will work ot it create() save()
 userSchema.pre('save', async function (next) {
   // eslint-disable-next-line @typescript-eslint/no-this-alias
-  const user = this; // doc
-  // hashing password and save into DB
-
+  const user = this;
+  //hasing password
   user.password = await bcrypt.hash(
     user.password,
     Number(config.bcrypt_salt_rounds),
   );
-
+  // next step
   next();
 });
 
-// set '' after saving password
+// post middleware / hook: we will work ot it create() save()
 userSchema.post('save', function (doc, next) {
   doc.password = '';
   next();
 });
 
-userSchema.statics.isUserExistsByCustomId = async function (id: string) {
+// user exist cusotm static method
+userSchema.statics.isUserExistByCustomId = async function (id: string) {
   return await User.findOne({ id }).select('+password');
 };
 
-userSchema.statics.isPasswordMatched = async function (
-  plainTextPassword,
-  hashedPassword,
+// user exist cusotm static method
+userSchema.statics.isPasswordMatch = async function (
+  plainTextPassword: string,
+  hashedPassword: string,
 ) {
   return await bcrypt.compare(plainTextPassword, hashedPassword);
 };
 
-userSchema.statics.isJWTIssuedBeforePasswordChanged = function (
-  passwordChangedTimestamp: Date,
-  jwtIssuedTimestamp: number,
+// check is the jwt token issued before password changed
+userSchema.statics.isJWTIssuedBeforePasswordChanged = async function (
+  passwordChangedTimeStamp: Date,
+  jwtIssuedTimeStamp: number,
 ) {
-  const passwordChangedTime =
-    new Date(passwordChangedTimestamp).getTime() / 1000;
-  return passwordChangedTime > jwtIssuedTimestamp;
+  const passwordChangedTime = Math.round(
+    new Date(passwordChangedTimeStamp).getTime() / 1000,
+  );
+  return passwordChangedTime > jwtIssuedTimeStamp;
 };
 
+// make model
 export const User = model<TUser, UserModel>('User', userSchema);

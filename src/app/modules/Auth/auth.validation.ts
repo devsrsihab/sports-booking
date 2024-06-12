@@ -1,5 +1,20 @@
 import { z } from 'zod';
 
+// user sign up validation 
+const userSignupValidationSchema = z.object({
+  body: z.object({
+    name: z.string({ required_error: 'Name is required' }).trim(),
+    email: z
+      .string({ required_error: 'Email is required' })
+      .email('Invalid email address')
+      .trim(),
+    password: z.string({ required_error: 'Password is required' }),
+    phone: z.string({ required_error: 'Phone is required' }).trim(),
+    address: z.string({ required_error: 'Address is required' }),
+    role: z.enum(['admin', 'user']),
+  }),
+});
+
 const loginValidationSchema = z.object({
   body: z.object({
     id: z.string({ required_error: 'Id is required.' }),
@@ -28,4 +43,5 @@ export const AuthValidation = {
   loginValidationSchema,
   changePasswordValidationSchema,
   refreshTokenValidationSchema,
+  userSignupValidationSchema,
 };
