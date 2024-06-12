@@ -58,28 +58,13 @@ userSchema.post('save', function (doc, next) {
   next();
 });
 
-// user exist cusotm static method
-userSchema.statics.isUserExistByCustomId = async function (id: string) {
-  return await User.findOne({ id }).select('+password');
-};
 
 // user exist cusotm static method
-userSchema.statics.isPasswordMatch = async function (
+userSchema.statics.isPasswordMatched = async function (
   plainTextPassword: string,
   hashedPassword: string,
 ) {
   return await bcrypt.compare(plainTextPassword, hashedPassword);
-};
-
-// check is the jwt token issued before password changed
-userSchema.statics.isJWTIssuedBeforePasswordChanged = async function (
-  passwordChangedTimeStamp: Date,
-  jwtIssuedTimeStamp: number,
-) {
-  const passwordChangedTime = Math.round(
-    new Date(passwordChangedTimeStamp).getTime() / 1000,
-  );
-  return passwordChangedTime > jwtIssuedTimeStamp;
 };
 
 // make model
