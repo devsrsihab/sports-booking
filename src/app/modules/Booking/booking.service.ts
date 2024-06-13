@@ -49,9 +49,16 @@ const getBookingsByUserFromDB = async (email: string) => {
   return result;
 };
 
+// cancel booking
+const cancelBookingFromDB = async (id: string) => {
+  const result = await Booking.findByIdAndUpdate(id, { isBooked: 'canceled' }).populate('facility').select('-user');
+  return result;
+};
+
 // export booking
 export const BookingServices = {
   createBookingIntoDB,
   getAllBookingsFromDB,
   getBookingsByUserFromDB,
+  cancelBookingFromDB,
 };
