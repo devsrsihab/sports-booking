@@ -12,10 +12,13 @@ router.post(
   '/',
   auth(USER_ROLE.user),
   validateRequest(BookingValidations.createBookingValidationSchema),
-  BookingControllers.createBookingIntoDB,
+  BookingControllers.createBooking,
 );
 
 // get all bookings
-router.get('/', auth(USER_ROLE.admin), BookingControllers.getAllBookingsFromDB);
+router.get('/', auth(USER_ROLE.admin), BookingControllers.getAllBookings);
+
+// get bookings by user
+router.get('/user', auth(USER_ROLE.user), BookingControllers.getBookingsByUser);
 
 export const BookingRoute = router;

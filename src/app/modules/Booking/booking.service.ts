@@ -7,7 +7,6 @@ import { Facility } from '../Facility/facility.model';
 
 // create booking
 const createBookingIntoDB = async (payload: TBooking) => {
-  
   // user id
   const user = await User.findOne({ email: payload.user });
   // push the user id in to payload
@@ -24,7 +23,8 @@ const createBookingIntoDB = async (payload: TBooking) => {
 
   // calculated payable ammount
   const { pricePerHour } = facility;
-  payload.payableAmount = ((parseInt(payload.endTime) - parseInt(payload.startTime)) * pricePerHour);
+  payload.payableAmount =
+    (parseInt(payload.endTime) - parseInt(payload.startTime)) * pricePerHour;
 
   // create booking
   const result = await Booking.create(payload);
@@ -37,8 +37,21 @@ const getAllBookingsFromDB = async () => {
   return result;
 };
 
+// view booked by user
+const getBookingsByUserFromDB = async (email: string) => {
+  // find the user by email
+  const user = await User.findOne({ email });
+  if (!user) {
+    throw new AppError(httpStatus.NOT_FOUND, 'User not found');
+  }
+
+  const result = await Booking.find({ user: user._id }).populate('facility');
+  return result;
+};
+
 // export booking
 export const BookingServices = {
   createBookingIntoDB,
   getAllBookingsFromDB,
+  getBookingsByUserFromDB,
 };
