@@ -1,14 +1,14 @@
-# Sports Facility Booking Platform
+# 🏟️ Sports Facility Booking Platform 📅
 
 
-## Project Overview
+## 📋 Project Overview
 
 The Sports Facility Booking Platform is a web application designed to streamline the process of booking sports facilities. It allows users to easily find, book, and manage reservations for various sports venues, providing a hassle-free experience for both users and administrators.
 
-### Project Entity Relation Diagram
+### 📊 Project Entity Relation Diagram
 ![Sports Facility Booking](https://i.ibb.co/L05Lq9H/PH-L2-Assignment-3.png)
 
-### Features
+### ✨ Features
 
 - **User Management:**
   - User registration and login with role-based access (admin and user).
@@ -31,7 +31,7 @@ The Sports Facility Booking Platform is a web application designed to streamline
   - Global error handling middleware for consistent error responses.
   - Validation of input data to ensure data integrity.
 
-### Technologies Used
+### 💻 Technologies Used
 
 - **Backend:**
   - Node.js
@@ -45,11 +45,11 @@ The Sports Facility Booking Platform is a web application designed to streamline
 - **Validation:**
   -The API employs Zod for input validation, ensuring data consistency. When validation fails, a 400 Bad Request status code is returned, accompanied by detailed error messages specifying the erroneous fields and reasons.`Zod Validation`.
 
-### Live Demo
+### 🚀 Live Demo
 
 View the live demo of the Sports Facility Booking Platform at [Live Demo URL](https://your-live-demo-url.com).
 
-### Setup Instructions
+### ⚙️ Setup Instructions
 
 To run this project locally, follow these steps:
 
