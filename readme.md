@@ -56,7 +56,7 @@ To run this project locally, follow these steps:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/sports-booking.git
+   git clone git@github.com:devsrsihab/sports-booking.git
    cd sports-booking
 
 2. **Set environment variables:**
