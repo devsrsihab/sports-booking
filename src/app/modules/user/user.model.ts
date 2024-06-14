@@ -52,12 +52,6 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
-// post middleware / hook: we will work ot it create() save()
-userSchema.post('save', function (doc, next) {
-  doc.password = '';
-  next();
-});
-
 
 // user exist cusotm static method
 userSchema.statics.isPasswordMatched = async function (

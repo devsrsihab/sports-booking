@@ -1,29 +1,33 @@
 # 🏟️ Sports Facility Booking Platform 📅
 
-
 ## 📋 Project Overview
 
 The Sports Facility Booking Platform is a web application designed to streamline the process of booking sports facilities. It allows users to easily find, book, and manage reservations for various sports venues, providing a hassle-free experience for both users and administrators.
 
 ### 📊 Project Entity Relation Diagram
+
 ![Sports Facility Booking](https://i.ibb.co/L05Lq9H/PH-L2-Assignment-3.png)
 
 ### ✨ Features
 
 - **User Management:**
+
   - User registration and login with role-based access (admin and user).
   - User profiles with contact information and address.
 
 - **Facility Management:**
+
   - CRUD operations for sports facilities.
   - Soft deletion of facilities to maintain historical data.
 
 - **Booking Management:**
+
   - Check availability of facilities based on date and time.
   - Create, view, update, and cancel bookings.
   - Automatic calculation of payable amount based on booking duration.
 
 - **Security:**
+
   - Authentication using JWT tokens.
   - Authorization middleware to restrict access based on user roles.
 
@@ -34,12 +38,14 @@ The Sports Facility Booking Platform is a web application designed to streamline
 ### 💻 Technologies Used
 
 - **Backend:**
+
   - Node.js
   - Express.js
   - MongoDB with Mongoose
   - TypeScript
 
 - **Authentication:**
+
   - JSON Web Tokens (JWT) for secure authentication.
 
 - **Validation:**
@@ -47,7 +53,7 @@ The Sports Facility Booking Platform is a web application designed to streamline
 
 ### 🚀 Live Demo
 
-View the live demo of the Sports Facility Booking Platform at [Live Demo URL](https://your-live-demo-url.com).
+View the live demo of the Sports Facility Booking Platform at [Live Demo URL](https://sports-booking-ten.vercel.app/).
 
 ### ⚙️ Setup Instructions
 
@@ -58,6 +64,8 @@ To run this project locally, follow these steps:
    ```bash
    git clone git@github.com:devsrsihab/sports-booking.git
    cd sports-booking
+
+   ```
 
 2. **Set environment variables:**
 
@@ -70,12 +78,17 @@ To run this project locally, follow these steps:
     JWT_ACCESS_SECRET=
     JWT_ACCESS_EXPIRES_IN=
 
+   ```
+
 3. **Install dependencies:**
 
    ```bash
     npm install
 
+   ```
+
 4. **Run Project:**
 
    ```bash
     npm start
+   ```

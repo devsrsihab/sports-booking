@@ -52,7 +52,7 @@ const getBookingsByUserFromDB = async (email: string) => {
 
 // cancel booking
 const cancelBookingFromDB = async (id: string) => {
-  const result = await Booking.findByIdAndUpdate(id, { isBooked: 'canceled' })
+  const result = await Booking.findByIdAndUpdate({_id: id}, { isBooked: 'canceled' })
     .populate('facility')
     .select('-user');
   return result;
