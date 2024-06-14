@@ -56,3 +56,9 @@ To run this project locally, follow these steps:
    ```bash
    git clone https://github.com/your-username/sports-booking.git
    cd sports-booking
+
+2. **Install dependencies:**
+
+   ```bash
+    npm install
+   cd sports-booking
