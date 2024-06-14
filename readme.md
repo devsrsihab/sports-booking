@@ -43,7 +43,7 @@ The Sports Facility Booking Platform is a web application designed to streamline
   - JSON Web Tokens (JWT) for secure authentication.
 
 - **Validation:**
-  - Input validation using custom middleware and libraries like `express-validator`.
+  -The API employs Zod for input validation, ensuring data consistency. When validation fails, a 400 Bad Request status code is returned, accompanied by detailed error messages specifying the erroneous fields and reasons.`Zod Validation`.
 
 ### Live Demo
 
