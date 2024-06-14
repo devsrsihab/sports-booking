@@ -74,3 +74,8 @@ To run this project locally, follow these steps:
 
    ```bash
     npm install
+
+4. **Run Project:**
+
+   ```bash
+    npm start
