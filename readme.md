@@ -1,27 +1,58 @@
-# Requirement Analysis and Entity-Relationship (ER) Diagram
+# Sports Facility Booking Platform
 
-## Requirement Analysis
+![Sports Facility Booking](link-to-your-logo.png)
 
-([Requirement Analysis - 👈 Click Here](https://docs.google.com/document/d/10mkjS8boCQzW4xpsESyzwCCLJcM3hvLghyD_TeXPBx0/edit?usp=sharing))
+## Project Overview
 
-*Description*: This document represents the requirement analysis of part-1.
+The Sports Facility Booking Platform is a web application designed to streamline the process of booking sports facilities. It allows users to easily find, book, and manage reservations for various sports venues, providing a hassle-free experience for both users and administrators.
 
-## Entity-Relationship (ER) Diagram
+### Features
 
-![UPDATED ER DIAGRAM](./Final.png)
+- **User Management:**
+  - User registration and login with role-based access (admin and user).
+  - User profiles with contact information and address.
 
-Description: This is an updated diagram illustrates the relationships among User, Student, Admin, Faculty, Academic Semester, Academic Faculty, Academic Department.
+- **Facility Management:**
+  - CRUD operations for sports facilities.
+  - Soft deletion of facilities to maintain historical data.
 
----
+- **Booking Management:**
+  - Check availability of facilities based on date and time.
+  - Create, view, update, and cancel bookings.
+  - Automatic calculation of payable amount based on booking duration.
 
-![POSTMAN COLLECTION](./postman_collection.json)
+- **Security:**
+  - Authentication using JWT tokens.
+  - Authorization middleware to restrict access based on user roles.
 
-Description: This is a postman collection of all the API endpoints.Download this , and import it in your postman if you needed.
+- **Error Handling:**
+  - Global error handling middleware for consistent error responses.
+  - Validation of input data to ensure data integrity.
 
----
+### Technologies Used
 
-### Uploading the Collection to Your Postman (If needed)
+- **Backend:**
+  - Node.js
+  - Express.js
+  - MongoDB with Mongoose
+  - TypeScript
 
-1. Download the Postman collection (.json file) from the provided source.
-2. Open Postman and click on "Import" (located in the upper-left corner).
-3. Choose the downloaded file and confirm the import.
+- **Authentication:**
+  - JSON Web Tokens (JWT) for secure authentication.
+
+- **Validation:**
+  - Input validation using custom middleware and libraries like `express-validator`.
+
+### Live Demo
+
+View the live demo of the Sports Facility Booking Platform at [Live Demo URL](https://your-live-demo-url.com).
+
+### Setup Instructions
+
+To run this project locally, follow these steps:
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/your-username/sports-booking.git
+   cd sports-booking
