@@ -6,8 +6,7 @@
 The Sports Facility Booking Platform is a web application designed to streamline the process of booking sports facilities. It allows users to easily find, book, and manage reservations for various sports venues, providing a hassle-free experience for both users and administrators.
 
 ### Project Entity Relation Diagram
-![Sports Facility Booking]([link-to-your-logo.png](https://i.ibb.co/L05Lq9H/PH-L2-Assignment-3.png))
-
+![Sports Facility Booking](https://i.ibb.co/L05Lq9H/PH-L2-Assignment-3.png)
 
 ### Features
 
