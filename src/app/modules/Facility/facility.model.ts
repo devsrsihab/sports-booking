@@ -25,5 +25,23 @@ const facilitySchema = new Schema<TFacility>({
   },
 });
 
+
+// filter out deleted documents
+facilitySchema.pre('find', function (next) {
+  this.find({ isDeleted: { $ne: true } });
+  next();
+});
+
+facilitySchema.pre('findOne', function (next) {
+  this.find({ isDeleted: { $ne: true } });
+  next();
+});
+
+facilitySchema.pre('aggregate', function (next) {
+  this.pipeline().unshift({ $match: { isDeleted: { $ne: true } } });
+  next();
+});
+
+
 // make a model
 export const Facility = model<TFacility>('Facility', facilitySchema);

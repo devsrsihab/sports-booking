@@ -24,6 +24,17 @@ const createBooking = catchAsync(async (req, res) => {
 // get all bookings
 const getAllBookings = catchAsync(async (req, res) => {
   const result = await BookingServices.getAllBookingsFromDB();
+  // if data is not found
+  if (result.length === 0) {
+    sendResponse(res, {
+      statusCode: httpStatus.NOT_FOUND,
+      success: false,
+      message: 'No Data Found',
+      data: result,
+    });
+  }
+
+  // if data is found
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -36,6 +47,18 @@ const getAllBookings = catchAsync(async (req, res) => {
 const getBookingsByUser = catchAsync(async (req, res) => {
   const { userEmail } = req.user;
   const result = await BookingServices.getBookingsByUserFromDB(userEmail);
+
+  // if data is not found
+  if (result.length === 0) {
+    sendResponse(res, {
+      statusCode: httpStatus.NOT_FOUND,
+      success: false,
+      message: 'No Data Found',
+      data: result,
+    });
+  }
+
+  // if data is found
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -61,6 +84,17 @@ const checkAvailability = catchAsync(async (req, res) => {
   const date = req.query?.date?.toString() ?? getCurrentDate();
 
   const result = await BookingServices.checkAvailability(date);
+  // if data is not found
+  if (result.length === 0) {
+    sendResponse(res, {
+      statusCode: httpStatus.NOT_FOUND,
+      success: false,
+      message: 'No Data Found',
+      data: result,
+    });
+  }
+
+  // if data is found
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,

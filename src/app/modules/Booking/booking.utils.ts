@@ -1,3 +1,5 @@
+import { TimeSlot } from "./booking.interface";
+
 export const getCurrentDate = (): string => {
   const today = new Date();
   const year = today.getFullYear();

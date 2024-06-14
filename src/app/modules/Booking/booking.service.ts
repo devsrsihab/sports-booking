@@ -58,6 +58,7 @@ const cancelBookingFromDB = async (id: string) => {
   return result;
 };
 
+// check Availability
 const checkAvailability = async (date: string) => {
   // Simulating booked time slots for a defined date (replace with actual DB query)
   const booked: TimeSlot[] = await Booking.find({ date }).select(
@@ -89,7 +90,7 @@ const checkAvailability = async (date: string) => {
     });
   }
 
-  // Function to convert time string to minutes
+  // convert time string to minutes
   function getTimeInMinutes(timeStr: string): number {
     const [hours, minutes] = timeStr.split(':').map(Number);
     return hours * 60 + minutes;
@@ -99,6 +100,10 @@ const checkAvailability = async (date: string) => {
   const availableSlots = removeOverlappingSlots(totalSlots, booked);
   return availableSlots;
 };
+
+
+
+
 
 // export booking
 export const BookingServices = {
