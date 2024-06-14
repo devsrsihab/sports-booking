@@ -2,6 +2,7 @@ import httpStatus from 'http-status';
 import catchAsync from '../../utils/catchAsync';
 import { BookingServices } from './booking.service';
 import sendResponse from '../../utils/sendResponse';
+import { getCurrentDate } from './booking.utils';
 
 // create booking
 const createBooking = catchAsync(async (req, res) => {
@@ -55,10 +56,24 @@ const cancelBooking = catchAsync(async (req, res) => {
   });
 });
 
+// check Availability
+const checkAvailability = catchAsync(async (req, res) => {
+  const date = req.query?.date?.toString() ?? getCurrentDate();
+
+  const result = await BookingServices.checkAvailability(date);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Availability retrieved successfully',
+    data: result,
+  });
+});
+
 // export controllers
 export const BookingControllers = {
   createBooking,
   getAllBookings,
   getBookingsByUser,
   cancelBooking,
+  checkAvailability,
 };

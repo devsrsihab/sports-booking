@@ -9,3 +9,8 @@ export type TBooking = {
   payableAmount: number;
   isBooked: 'confirmed' | 'unconfirmed' | 'canceled';
 };
+
+export type TimeSlot = {
+  startTime: string;
+  endTime: string;
+};
