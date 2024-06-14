@@ -3,5 +3,5 @@ export type TFacility = {
   description: string;
   pricePerHour: number;
   location: string;
-  isDelete: boolean,
+  isDeleted: boolean;
 };

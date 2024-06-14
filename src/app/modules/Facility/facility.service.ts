@@ -26,7 +26,10 @@ const updateFacilityIntoDB = async (id: string, payload: TFacility) => {
 
 // delete facility
 const deleteFacilityFromDB = async (id: string) => {
-  const result = await Facility.deleteOne({ _id: id });
+  const result = await Facility.findByIdAndUpdate({ _id: id },{isDeleted:true}, {
+    new: true,
+    runValidators: true,
+  });
   return result;
 };
 

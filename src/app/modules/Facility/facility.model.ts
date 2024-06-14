@@ -19,7 +19,7 @@ const facilitySchema = new Schema<TFacility>({
     type: String,
     required: true,
   },
-  isDelete: {
+  isDeleted: {
     type: Boolean,
     default: false,
   },
