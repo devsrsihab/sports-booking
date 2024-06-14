@@ -57,8 +57,18 @@ To run this project locally, follow these steps:
    git clone https://github.com/your-username/sports-booking.git
    cd sports-booking
 
-2. **Install dependencies:**
+2. **Set environment variables:**
+
+   ```bash
+    NODE_ENV=
+    PORT=
+    DATABASE_URL=
+    BCRYPT_SALT_ROUNDS=
+    USER_DEFAULT_PASSWORD=
+    JWT_ACCESS_SECRET=
+    JWT_ACCESS_EXPIRES_IN=
+
+3. **Install dependencies:**
 
    ```bash
     npm install
-   cd sports-booking
